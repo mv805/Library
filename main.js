@@ -4,18 +4,22 @@ function Book(title, author, numOfPages, isRead) {
     this.author = author
     this.numOfPages = numOfPages
     this.isRead = isRead
-    this.infoText = `${this.title} by ${this.author}, ${this.numOfPages} pages`
+
+}
+
+Book.prototype.getReadStatus = function () {
 
     if (this.isRead) {
-        this.readStatus = `, has been read.`
+        return ', has been read.';
     } else {
-        this.readStatus = `, has not been read yet.`
+        return ', has not been read yet.';
     }
 
-    this.info = function () {
-        return this.infoText + this.readStatus;
-    }
+}
 
+Book.prototype.info = function () {
+
+    return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
 }
 
 const book1 = new Book("Big Baby Book", "J.K. Rowlings", 450, true);
