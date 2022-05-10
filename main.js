@@ -1,3 +1,5 @@
+let myLibrary = [];
+
 function Book(title, author, numOfPages, isRead) {
 
     this.title = title
@@ -20,6 +22,10 @@ Book.prototype.getReadStatus = function () {
 Book.prototype.info = function () {
 
     return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
+}
+
+function addBookToLibrary () {
+    
 }
 
 const book1 = new Book("Big Baby Book", "J.K. Rowlings", 450, true);
