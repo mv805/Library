@@ -33,5 +33,6 @@ function addBookToLibrary(e) {
     e.preventDefault();
     let bookFormValues = document.querySelector('#book-form').elements;
     myLibrary.push(new Book(bookFormValues['book-title'].value, bookFormValues['book-author'].value, +bookFormValues['number-of-pages'].value, bookFormValues['book-read-status'].checked));
-    
+    bookForm.reset();
+
 }
