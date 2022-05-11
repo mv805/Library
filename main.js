@@ -24,8 +24,8 @@ Book.prototype.info = function () {
     return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
 }
 
-function addBookToLibrary () {
-    
+function addBookToLibrary() {
+
 }
 
 const book1 = new Book("Big Baby Book", "J.K. Rowlings", 450, true);

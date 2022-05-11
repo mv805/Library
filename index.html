@@ -6,15 +6,45 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap"
+            rel="stylesheet">
         <title>Library</title>
         <script src="main.js" defer></script>
 
     </head>
 
     <body>
-        <div class="book-form"></div>
+        <div class="book-form-area">
+            <h1>Create a Book</h1>
+            <form action="" class="book-form">
+                
+                <div class="book-title-input">
+                    <label for="book-title">Title</label>
+                    <input type="text" id="book-title">
+                </div>
+                <div>
+                    <label for="book-author">Author</label>
+                    <input type="text" id="book-author">
+                </div>
+                <div class="pages-input">
+                    <label for="number-of-pages">Number of Pages</label>
+                    <input type="number" id="number-of-pages" min="1">
+                </div>
+                <div class="read-status-checkbox">
+                    <label for="book-read-status">Has Been Read</label>
+                    <input type="checkbox" id="book-read-status">
+                </div>
+                <button>+Add Book</button>
+            </form>
+        </div>
         <div class="book-shelf">
-            <div class="books"></div>
+            <div class="books-area">
+                <div class="read-books-area"></div>
+                <div class="not-read-books-area"></div>
+            </div>
             <div class="shelf"></div>
         </div>
         <footer>Made by...</footer>
