@@ -41,6 +41,7 @@ footer {
 .book-form {
     background-color: #204947;
     width: 70%;
+    max-width: 700px;
     height: 70%;
     border-radius: 1rem;
     display: flex;
@@ -57,7 +58,8 @@ footer {
     align-content: center;
     width: 15rem;
 }
-.read-status-checkbox{
+
+.read-status-checkbox {
     align-items: center;
 }
 
@@ -80,6 +82,7 @@ footer {
     font-size: 1rem;
     font-weight: 700;
 }
+
 .book-form button:hover {
     background-color: #00b199;
 }

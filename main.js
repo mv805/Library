@@ -1,5 +1,9 @@
+const book1 = new Book("Big Baby Book", "J.K. Rowlings", 450, true);
+
 let myLibrary = [];
 
+let bookForm = document.querySelector('.book-form');
+bookForm.addEventListener('submit', addBookToLibrary);
 function Book(title, author, numOfPages, isRead) {
 
     this.title = title
@@ -24,10 +28,10 @@ Book.prototype.info = function () {
     return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(e) {
 
+    e.preventDefault();
+    let bookFormValues = document.querySelector('#book-form').elements;
+    myLibrary.push(new Book(bookFormValues['book-title'].value, bookFormValues['book-author'].value, +bookFormValues['number-of-pages'].value, bookFormValues['book-read-status'].checked));
+    
 }
-
-const book1 = new Book("Big Baby Book", "J.K. Rowlings", 450, true);
-
-const book2 = new Book("BAMA", "Chris Tucker", 45, false);
