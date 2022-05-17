@@ -157,3 +157,23 @@ footer {
 .book-is-not-read {
     background-color: red;
 }
+
+.book-remove-button {
+    color: darkred;
+    background-color: #006ca200;
+    border: none;
+    padding: 0;
+}
+
+.book-remove-button:hover {
+    color: red;
+}
+
+.book-remove-button:active {
+    color: white;
+}
+
+.status-and-remove-container {
+    display: flex;
+    column-gap: 5px;
+}

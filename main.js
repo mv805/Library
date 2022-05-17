@@ -54,41 +54,56 @@ function addBookToShelf(book) {
 
     let bookElement = document.createElement('div');
 
-    let bookElementDetails = document.createElement('div');
-    bookElementDetails.classList.add('book-details');
-    let bookElementTitle = document.createElement('div');
-    bookElementTitle.classList.add('book-written-title');
-    bookElementTitle.textContent = `${book.title}`;
-    let bookElementSpacer = document.createElement('div');
-    bookElementSpacer.textContent = '\u00A0by\u00A0';
-    bookElementSpacer.style.fontWeight = '100';
-    let bookElementAuthor = document.createElement('div');
-    bookElementAuthor.classList.add('book-written-author');
-    bookElementAuthor.textContent = `${book.author}`;
-    bookElementDetails.appendChild(bookElementTitle);
-    bookElementDetails.appendChild(bookElementSpacer);
-    bookElementDetails.appendChild(bookElementAuthor);
-    bookElement.appendChild(bookElementDetails);
+    let bookDetails = document.createElement('div');
+    bookDetails.classList.add('book-details');
 
-    let bookElementNumberOfPages = document.createElement('div');
-    bookElementNumberOfPages.classList.add('book-written-number-of-pages');
-    bookElementNumberOfPages.textContent = `${book.numOfPages} Pages`;
-    bookElement.appendChild(bookElementNumberOfPages);
+    let bookTitle = document.createElement('div');
+    bookTitle.classList.add('book-written-title');
+    bookTitle.textContent = `${book.title}`;
 
-    let bookElementReadStatus = document.createElement('div');
-    bookElementReadStatus.classList.add('book-written-read-status');
+    let bookSpacer = document.createElement('div');
+    bookSpacer.textContent = '\u00A0by\u00A0';
+    bookSpacer.style.fontWeight = '100';
+
+    let bookAuthor = document.createElement('div');
+    bookAuthor.classList.add('book-written-author');
+    bookAuthor.textContent = `${book.author}`;
+
+    bookDetails.appendChild(bookTitle);
+    bookDetails.appendChild(bookSpacer);
+    bookDetails.appendChild(bookAuthor);
+
+    bookElement.appendChild(bookDetails);
+
+    let bookNumberOfPages = document.createElement('div');
+    bookNumberOfPages.classList.add('book-written-number-of-pages');
+    bookNumberOfPages.textContent = `${book.numOfPages} Pages`;
+    bookElement.appendChild(bookNumberOfPages);
+
+    let bookReadStatus = document.createElement('div');
+    bookReadStatus.classList.add('book-written-read-status');
     if (book.isRead) {
-        bookElementReadStatus.textContent = 'Has been read';
-        bookElementReadStatus.classList.add('book-is-read');
+        bookReadStatus.textContent = 'Has been read';
+        bookReadStatus.classList.add('book-is-read');
     } else {
-        bookElementReadStatus.textContent = 'Has not been read';
-        bookElementReadStatus.classList.add('book-is-not-read');
+        bookReadStatus.textContent = 'Has not been read';
+        bookReadStatus.classList.add('book-is-not-read');
     }
 
-    bookElement.appendChild(bookElementReadStatus);
+    let bookRemoveButton = document.createElement('button');
+    bookRemoveButton.classList.add('material-icons');
+    bookRemoveButton.textContent = 'cancel';
+    bookRemoveButton.classList.add('book-remove-button');
+
+    let readStatusAndRemoveButtonContainer = document.createElement('div');
+    readStatusAndRemoveButtonContainer.appendChild(bookRemoveButton);
+    readStatusAndRemoveButtonContainer.appendChild(bookReadStatus);
+    readStatusAndRemoveButtonContainer.classList.add('status-and-remove-container');
+    bookElement.appendChild(readStatusAndRemoveButtonContainer);
 
     bookElement.classList.add('book');
     bookElement.setAttribute('id', book.bookId);
+
     bookArea.appendChild(bookElement);
 }
 
