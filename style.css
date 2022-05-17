@@ -147,6 +147,7 @@ footer {
     border: 1px solid rgb(54, 54, 54);
     border-radius: 4px;
     padding: 5px 0;
+    cursor: pointer;
 }
 
 .book-is-read {
@@ -167,6 +168,7 @@ footer {
 
 .book-remove-button:hover {
     color: red;
+    cursor: pointer;
 }
 
 .book-remove-button:active {

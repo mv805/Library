@@ -1,4 +1,5 @@
 let bookIdCounter = 0;
+const maxBookCount = 10;
 let myLibrary = [];
 
 let bookForm = document.querySelector('.book-form');
@@ -40,6 +41,12 @@ Book.prototype.info = function () {
 function addBookToLibrary(e) {
 
     e.preventDefault();
+
+    if (myLibrary.length === maxBookCount) {
+        alert('Book shelf full');
+        return;
+    }
+
     let bookFormValues = document.querySelector('#book-form').elements;
     let bookToAdd = new Book(bookFormValues['book-title'].value, bookFormValues['book-author'].value, +bookFormValues['number-of-pages'].value, bookFormValues['book-read-status'].checked);
     bookToAdd.setBookID(bookIdCounter);
@@ -89,6 +96,7 @@ function addBookToShelf(book) {
         bookReadStatus.textContent = 'Has not been read';
         bookReadStatus.classList.add('book-is-not-read');
     }
+    bookReadStatus.addEventListener('click', changeReadStatus);
 
     let bookRemoveButton = document.createElement('button');
     bookRemoveButton.classList.add('material-icons');
@@ -116,6 +124,31 @@ function removeBook(e) {
         if (book.bookId === bookIdContainer) {
             myLibrary.splice(index, 1);
         }
+    });
+}
+
+function changeReadStatus(e) {
+    console.log('changing read status...');
+    let bookClickedId = e.target.parentNode.parentNode.id;
+
+    myLibrary.forEach((book) => {
+
+        if (book.bookId === bookClickedId) {
+            if (book.isRead) {
+                book.isRead = false;
+                e.target.textContent = 'Has not been read';
+                e.target.classList.remove('book-is-read');
+                e.target.classList.add('book-is-not-read');
+            } else {
+                book.isRead = true;
+                e.target.textContent = 'Has been read';
+                e.target.classList.add('book-is-read');
+                e.target.classList.remove('book-is-not-read');
+            }
+        } else {
+            return;
+        }
+
     });
 }
 
