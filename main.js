@@ -94,6 +94,7 @@ function addBookToShelf(book) {
     bookRemoveButton.classList.add('material-icons');
     bookRemoveButton.textContent = 'cancel';
     bookRemoveButton.classList.add('book-remove-button');
+    bookRemoveButton.addEventListener('click', removeBook);
 
     let readStatusAndRemoveButtonContainer = document.createElement('div');
     readStatusAndRemoveButtonContainer.appendChild(bookRemoveButton);
@@ -105,6 +106,17 @@ function addBookToShelf(book) {
     bookElement.setAttribute('id', book.bookId);
 
     bookArea.appendChild(bookElement);
+}
+
+function removeBook(e) {
+    let bookIdContainer = e.target.parentNode.parentNode.id;
+    let bookToRemove = document.querySelector(`#${bookIdContainer}`);
+    bookArea.removeChild(bookToRemove);
+    myLibrary.forEach((book, index) => {
+        if (book.bookId === bookIdContainer) {
+            myLibrary.splice(index, 1);
+        }
+    });
 }
 
 /*let book1 = new Book("Grapes of Wrath", "Ernest Hemingway", 500, false);
