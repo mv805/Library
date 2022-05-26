@@ -6,36 +6,35 @@ let bookForm = document.querySelector('.book-form');
 bookForm.addEventListener('submit', addBookToLibrary);
 
 const bookArea = document.querySelector('.books-area');
-function Book(title, author, numOfPages, isRead) {
 
-    this.title = title
-    this.author = author
-    this.numOfPages = numOfPages
-    this.isRead = isRead
-    this.bookId = undefined
-}
+class Book {
 
-Book.prototype.setBookID = function (idNumber) {
-
-    if (this.bookId === undefined) {
-        this.bookId = ('book-' + idNumber);
-    };
-
-}
-
-Book.prototype.getReadStatus = function () {
-
-    if (this.isRead) {
-        return ', has been read.';
-    } else {
-        return ', has not been read yet.';
+    constructor(title, author, numOfPages, isRead) {
+        this.title = title
+        this.author = author
+        this.numOfPages = numOfPages
+        this.isRead = isRead
+        this.bookId = undefined
     }
 
-}
+    setBookID(idNumber) {
+        if (this.bookId === undefined) {
+            this.bookId = ('book-' + idNumber);
+        };
+    }
 
-Book.prototype.info = function () {
+    getReadStatus() {
+        if (this.isRead) {
+            return ', has been read.';
+        } else {
+            return ', has not been read yet.';
+        }
+    }
 
-    return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
+    info() {
+
+        return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
+    }
 }
 
 function addBookToLibrary(e) {
@@ -151,6 +150,3 @@ function changeReadStatus(e) {
 
     });
 }
-
-/*let book1 = new Book("Grapes of Wrath", "Ernest Hemingway", 500, false);
-book1.setBookID();*/
