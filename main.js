@@ -6,35 +6,36 @@ let bookForm = document.querySelector('.book-form');
 bookForm.addEventListener('submit', addBookToLibrary);
 
 const bookArea = document.querySelector('.books-area');
+function Book(title, author, numOfPages, isRead) {
 
-class Book {
+    this.title = title
+    this.author = author
+    this.numOfPages = numOfPages
+    this.isRead = isRead
+    this.bookId = undefined
+}
 
-    constructor(title, author, numOfPages, isRead) {
-        this.title = title
-        this.author = author
-        this.numOfPages = numOfPages
-        this.isRead = isRead
-        this.bookId = undefined
+Book.prototype.setBookID = function (idNumber) {
+
+    if (this.bookId === undefined) {
+        this.bookId = ('book-' + idNumber);
+    };
+
+}
+
+Book.prototype.getReadStatus = function () {
+
+    if (this.isRead) {
+        return ', has been read.';
+    } else {
+        return ', has not been read yet.';
     }
 
-    setBookID(idNumber) {
-        if (this.bookId === undefined) {
-            this.bookId = ('book-' + idNumber);
-        };
-    }
+}
 
-    getReadStatus() {
-        if (this.isRead) {
-            return ', has been read.';
-        } else {
-            return ', has not been read yet.';
-        }
-    }
+Book.prototype.info = function () {
 
-    info() {
-
-        return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
-    }
+    return `${this.title} by ${this.author}, ${this.numOfPages} pages` + this.getReadStatus();
 }
 
 function addBookToLibrary(e) {
